@@ -9,16 +9,11 @@ export const getAndroidVersion = async (storeURL = '') => {
         throw new Error('androidStoreURL is invalid.');
     });
 
-
-    // console.log('responsexx', response)
-
     // const matches = response.match(/\[\[\[['"]((\d+\.)+\d+)['"]\]\],/);
     const matches = response.match(/\([0-9]+\),/g);
     if (!matches) {
         throw new Error("can't get android app version.");
     }
-    // return matches[1];
-    // console.log('matchesxx', matches)
     
     return String(matches[1].slice(1, -2))
 };
